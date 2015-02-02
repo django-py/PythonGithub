@@ -1,4 +1,4 @@
-from . import base
+from . import GithubRequest
 
 __all__ = [
     'zend',
@@ -12,7 +12,7 @@ def request(action, **kwargs):
     :param kwargs:
     :return:
     """
-    gr = base.GithubRequest()
+    gr = GithubRequest()
 
     return gr.request(action, **kwargs)
 

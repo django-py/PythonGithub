@@ -1,4 +1,4 @@
-import os
+#!/usr/bin/env python
 
 from setuptools import setup, find_packages
 
@@ -15,7 +15,8 @@ setup(
     url="https://github.com/nicchub/",
     packages=find_packages(exclude=[]),
 
-    requires=['requests >= 2.5.1'],
+    install_requires=['requests >= 2.5',],
+    tests_require=['python-coveralls',],
 
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -26,6 +27,7 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.2",
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries"
     ]

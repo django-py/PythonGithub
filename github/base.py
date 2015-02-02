@@ -1,7 +1,7 @@
 import logging
 import collections
 import requests
-from exceptions import GitHubRequestException
+from .exceptions import GitHubRequestException
 
 
 class GithubModel(object):

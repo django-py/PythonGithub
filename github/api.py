@@ -1,7 +1,8 @@
 from . import GithubRequest
 
 __all__ = [
-    'zend',
+    'zen',
+    'users',
 ]
 
 
@@ -17,11 +18,21 @@ def request(action, **kwargs):
     return gr.request(action, **kwargs)
 
 
-def zend(**kwargs):
+def zen(**kwargs):
     """
     Return a random selection from github design philosophies
     :param kwargs:
     :return:
     """
     _method_api = 'zen'
+    return request(_method_api, **kwargs)
+
+
+def users(**kwargs):
+    """
+    Return information a specific username
+    :param username:
+    :return:
+    """
+    _method_api = 'users'
     return request(_method_api, **kwargs)

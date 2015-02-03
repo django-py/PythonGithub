@@ -1,3 +1,4 @@
+import json
 import logging
 import collections
 import requests
@@ -9,7 +10,7 @@ class GithubModel(object):
     Wrapper Response Model
     """
     __attrs__ = [
-        'response',
+        'objects',
         'response_code',
         'rate_limit',
         'rate_limit_remaining'
@@ -17,9 +18,21 @@ class GithubModel(object):
 
     def __init__(self, response):
         self.response_code = response.status_code
-        self.response = response._content
+
+        #- namedtuplesss
+        print response.__dict__
+        print response._content.__dict__
+
+        rp = json.dumps([response._content])
+
+
+        obj = collections.namedtuple('Objects', rp.keys())
+        self.objects = obj
+
         self.rate_limit = response.headers['x-ratelimit-limit']
         self.rate_limit_remaining = response.headers['x-ratelimit-remaining']
+
+        print self.objects
 
 
 class GithubRequest(object):
@@ -33,11 +46,17 @@ class GithubRequest(object):
         self._endpoint = ''
         self.model = {}
 
-    def _build_url(self, action):
-        self._endpoint = self._API_URL + action
+    def _build_url(self, *args, **kwargs):
+        print args
+        print kwargs
+
+        args = list[args]
+
+        self._endpoint = self._API_URL.join(args)
+
         return self._endpoint
 
-    def request(self, action, **kwargs):
+    def request(self, action, *args, **kwargs):
         """
         call a API github method
         :param action:
@@ -45,7 +64,6 @@ class GithubRequest(object):
         :return:
         """
         url = self._build_url(action)
-
         self._response = requests.get(url)
         response = self._response
 
@@ -61,3 +79,33 @@ class GithubRequest(object):
             )
 
         return model
+
+
+def request(*args, **kwargs):
+    """
+    Request buil method
+    :param action:
+    :param kwargs:
+    :return:
+    """
+    gr = GithubRequest()
+
+    return gr.request(*args, **kwargs)
+
+
+class GithubUser(object):
+    """
+    Github User Model
+    """
+    _endpoint = 'users'
+
+    def get(self, *args, **kwargs):
+        """
+        :param github_username:
+        :return:
+        """
+        return request(self._endpoint, *args, **kwargs)
+
+
+class Github(object):
+    users = GithubUser()

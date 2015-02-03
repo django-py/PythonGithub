@@ -1,6 +1,6 @@
 PythonGithub
 =====================
-PythonGithub is a library(wrapper) for the Github API V3. 
+PythonGithub is a library for the Github API. (Actually in development). 
 
 .. image:: https://api.travis-ci.org/nicchub/PythonGithub.png?branch=master
    :target: https://travis-ci.org/nicchub/PythonGithub

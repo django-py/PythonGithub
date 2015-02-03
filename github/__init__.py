@@ -9,4 +9,5 @@ __author__ = 'Nicolas Mendoza'
 __license__ = 'MIT License'
 
 from .base import *
-from .api import *
+
+api = Github()

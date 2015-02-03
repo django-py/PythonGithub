@@ -5,6 +5,9 @@ PythonGithub is a library for the Github API. (Actually in development).
 .. image:: https://api.travis-ci.org/nicchub/PythonGithub.png?branch=master
    :target: https://travis-ci.org/nicchub/PythonGithub
 
+.. image:: https://coveralls.io/repos/nicchub/PythonGithub/badge.svg
+  :target: https://coveralls.io/r/nicchub/PythonGithub
+
 .. image:: https://badge.fury.io/py/PythonGithubAPI.png
    :target: http://badge.fury.io/py/PythonGithubAPI
 

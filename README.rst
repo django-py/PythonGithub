@@ -1,5 +1,5 @@
 .. image::
-    https://raw.github.com/nicchub/PythonGithub/master/images/PyGithub.png
+    https://raw.githubusercontent.com/nicchub/PythonGithub/master/images/PythonGithub.png
 
 Python Library for communicating with the GitHub API. The goal of the library is to support 100% of the GitHub v3 API.
 

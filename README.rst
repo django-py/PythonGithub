@@ -24,10 +24,11 @@ Installation:
 
 Quickstart
 =====================
-PythonGithub is easy, the most simple method is `zen() <https://api.github.com/zen>`_ that don't required authentication and returns a ramdon selection of the github design philosophy.
+PythonGithub is easy, the most simple method is `zen() <https://api.github.com/zen>`_ that don't required authentication.
 
 api.zen()
 **********************
+Returns a ramdon selection of the github design philosophy.
 ::
 
     from github import api
@@ -35,10 +36,10 @@ api.zen()
     api.zen()
     > u'Mind your words, they are important.'
 
-Get all information about a specific github username.   
 
 api.users.get()
 **********************
+Get all information about a specific github username.  
 ::
 
     from github import api

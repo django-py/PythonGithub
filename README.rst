@@ -33,7 +33,7 @@ api.zen()
     from github import api
     
     api.zen()
-    > Mind your words, they are important.
+    > u'Mind your words, they are important.'
 
 Get all information about a specific github username.   
 
@@ -45,12 +45,10 @@ api.users.get()
     
     user = api.users.get('nicchub')
     
-    user.objects.name
-    > Nicco
-    
-    user.objects._fields
-    >('public_repos', 'gravatar_id', 'created_at', 'avatar_url', ...)
-
+    user.name
+    > u'Nicco'
+    user.login
+    > u'nicchub'
 
     
 Documentation

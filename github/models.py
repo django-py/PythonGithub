@@ -1,24 +1,25 @@
-from collections import namedtuple
-from .exceptions import GithubDecodeError
+from abc import ABCMeta, abstractmethod
+
+__all__ = ['GithubUserModel',]
 
 
-class GithubModel(object):
+class GithubAbstractModel:
     """
-    Wrapper Response Model
+    Model Descriptor
     """
-    __attrs__ = [
-        'objects',
-        'rate_limit',
-        'rate_limit_remaining'
-    ]
+    __metaclass__ = ABCMeta
 
-    def __init__(self, response):
-        self.rate_limit = response.headers['x-ratelimit-limit']
-        self.rate_limit_remaining = response.headers['x-ratelimit-remaining']
+    def __init__(self, *args, **kwargs):
+        for dct in args:
+            for key in dct:
+                setattr(self, key, dct[key])
 
-        #todo bad design
-        try:
-            objects = response.json()
-            self.objects = namedtuple('Data', objects.keys())._make(objects.values())
-        except:
-            self.objects = namedtuple('Data', 'content')._make([response._content,])
+        for key in kwargs:
+            setattr(self, key, kwargs[key])
+
+
+class GithubUserModel(GithubAbstractModel):
+    """
+    Github User
+    """
+    pass

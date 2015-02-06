@@ -1,25 +1,13 @@
 from .grequests import request
+from .api import *
 
 
-class GithubUser(object):
-    """
-    Github User
-    """
-    _endpoint = 'users'
-
-    def get(self, *args, **kwargs):
-        """
-        :param github_username:
-        :return:
-        """
-        return request(self._endpoint, *args, **kwargs)
-
-
-class Github(object):
+class GithubAPI(object):
     """
     Base Github Object
     """
-    users = GithubUser()
+
+    users = GithubUserAPI()
 
     @staticmethod
     def zen():

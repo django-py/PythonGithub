@@ -1,5 +1,4 @@
 import requests
-from .models import GithubModel
 from .exceptions import GitHubRequestException
 
 
@@ -10,7 +9,6 @@ class GithubRequest(object):
     _API_URL = ('https://api.github.com',)
 
     def __init__(self):
-        self._response = {}
         self._endpoint = ''
         self.model = {}
 
@@ -33,8 +31,7 @@ class GithubRequest(object):
         :return:
         """
         url = self._build_url(*args, **kwargs)
-        self._response = requests.get(url)
-        response = self._response
+        response = requests.get(url)
 
         if response.status_code == 404:
             raise GitHubRequestException(
@@ -43,11 +40,11 @@ class GithubRequest(object):
                 response.status_code
             )
 
-        self.model = GithubModel(response)
-
-        model = self.model
-
-        return model
+        # todo it's a dirty workaround..will delete the requests dependency.
+        try:
+            return response.json()
+        except:
+            return response.text
 
 
 def request(*args, **kwargs):

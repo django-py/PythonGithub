@@ -10,4 +10,4 @@ __license__ = 'MIT License'
 
 from .base import *
 
-api = Github()
+api = GithubAPI()

@@ -1,22 +1,19 @@
 import json
-from .grequests import request
+import request
 from .models import GithubUserModel
 
 
-class GithubUserAPI(object):
+class User(object):
     """
     Github User
     """
-    _endpoint = 'users'
-
-    def _get(self, *args, **kwargs):
-        return request(self._endpoint, *args, **kwargs)
+    _api_method = 'users'
 
     def get(self, *args, **kwargs):
         """
         :param github_username:
         :return:
         """
-        content = self._get(*args, **kwargs)
+        content = request.get(self._api_method, **kwargs)
 
         return GithubUserModel(content)

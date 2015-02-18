@@ -1,4 +1,4 @@
-from .grequests import request
+import request
 from .api import *
 
 
@@ -7,13 +7,13 @@ class GithubAPI(object):
     Base Github Object
     """
 
-    users = GithubUserAPI()
+    users = User()
 
     @staticmethod
     def zen():
-        _endpoint = 'zen'
+        _api_method = 'zen'
         """
         Github Quotes
         :return:
         """
-        return request(_endpoint)
+        return request.get(_api_method)

@@ -15,7 +15,6 @@ setup(
     url="https://github.com/nicchub/",
     packages=find_packages(exclude=[]),
 
-    install_requires=['requests >= 2.5',],
     tests_require=['python-coveralls',],
 
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
